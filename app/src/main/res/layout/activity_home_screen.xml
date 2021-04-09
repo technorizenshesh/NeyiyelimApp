@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.infideap.drawerbehavior.AdvanceDrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFFFF"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+
+
+<!--        <RelativeLayout
+            android:id="@+id/RR_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp">
+
+            <RelativeLayout
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true">
+
+
+                 <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/back"/>
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Home"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+             <RelativeLayout
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true">
+
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/menu"></ImageView>
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>-->
+
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/purple_500"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#FFFFFFFF"
+            android:fitsSystemWindows="true">
+
+            <include
+                android:id="@+id/navId"
+                layout="@layout/navigation_view" />
+
+        </com.google.android.material.navigation.NavigationView>
+
+        <FrameLayout
+            android:id="@+id/mainContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_45sdp"
+            android:layout_marginBottom="@dimen/_50sdp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+                android:id="@+id/bottomNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_alignParentBottom="true"
+                app:mbn_backgroundBottomColor="@color/purple_500"
+                app:mbn_circleColor="@color/purple_500"
+                app:mbn_defaultIconColor="@color/white"
+                app:mbn_rippleColor="@color/white"
+                app:mbn_selectedIconColor="@color/white"
+                app:mbn_shadowColor="@color/purple_500"
+                app:mbn_countBackgroundColor="@color/purple_500"
+
+                 />
+
+    <!--         <RelativeLayout
+                 android:id="@+id/RR_btm"
+                 android:layout_width="match_parent"
+                 android:layout_height="@dimen/_60sdp"
+                 android:layout_alignParentBottom="true">
+
+                 <ImageView
+                     android:id="@+id/imgHome"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="@dimen/_18sdp"
+                     android:layout_marginBottom="@dimen/_22sdp"
+                     android:src="@drawable/home">
+
+                 </ImageView>
+
+                 <RelativeLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="@dimen/_50sdp"
+                     android:layout_alignParentBottom="true"
+                     android:background="@drawable/btm_bg3">
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="@dimen/_50sdp"
+                         android:orientation="horizontal"
+                         android:weightSum="4">
+
+                         <RelativeLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_weight="1"
+                             android:visibility="invisible">
+
+                             <ImageView
+                                 android:layout_width="@dimen/_20sdp"
+                                 android:layout_height="@dimen/_20sdp"
+                                 android:layout_centerHorizontal="true"
+                                 android:src="@drawable/home" />
+
+                             <TextView
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:layout_centerHorizontal="true"
+                                 android:layout_marginTop="@dimen/_2sdp"
+                                 android:text="Home"
+                                 android:textColor="@color/white"
+                                 android:textSize="@dimen/_10sdp"
+                                 android:textStyle="bold">
+
+                             </TextView>
+                         </RelativeLayout>
+
+                         <RelativeLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_weight="1">
+
+                             <ImageView
+                                 android:layout_width="@dimen/_20sdp"
+                                 android:layout_height="@dimen/_20sdp"
+                                 android:layout_centerHorizontal="true"
+                                 android:src="@drawable/card" />
+
+                         </RelativeLayout>
+
+                         <RelativeLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_weight="1">
+
+                             <ImageView
+                                 android:layout_width="@dimen/_20sdp"
+                                 android:layout_height="@dimen/_20sdp"
+                                 android:layout_centerHorizontal="true"
+                                 android:src="@drawable/search" />
+
+
+                         </RelativeLayout>
+
+                         <RelativeLayout
+                             android:id="@+id/RRHome"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_weight="1">
+
+                             <ImageView
+                                 android:layout_width="@dimen/_20sdp"
+                                 android:layout_height="@dimen/_20sdp"
+                                 android:layout_centerHorizontal="true"
+                                 android:src="@drawable/profile" />
+
+                         </RelativeLayout>
+
+                     </LinearLayout>
+
+
+                 </RelativeLayout>
+
+             </RelativeLayout>-->
+
+        </RelativeLayout>
+
+    </com.infideap.drawerbehavior.AdvanceDrawerLayout>
+
+
+</layout>

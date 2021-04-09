@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:background="@drawable/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/RR_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp">
+
+
+                    <RelativeLayout
+                        android:id="@+id/RR_back"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:src="@drawable/back"
+                            android:layout_centerInParent="true"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp">
+
+                        </ImageView>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_below="@+id/RR_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/_20sdp"
+                    android:orientation="vertical"
+                    >
+
+
+                    <RelativeLayout
+                        android:gravity="center"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Create New Password"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/_20sdp"/>
+
+                    </RelativeLayout>
+
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Enter your OTP Code"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_17sdp"/>
+
+                    <TextView
+                        android:layout_margin="@dimen/_25sdp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Please enter your OTP \nCode"
+                        android:textColor="@color/colorGray"
+                        android:textSize="@dimen/_16sdp" />
+
+                    <LinearLayout
+                        android:padding="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <EditText
+                            android:gravity="center"
+                            android:layout_gravity="left"
+                            android:id="@+id/et1"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:textColorHint="@color/gray"
+                            android:singleLine="true"
+                            android:maxLength="1"
+                            android:textColor="@color/white"
+                            android:background="@drawable/oval_gray"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:textSize="@dimen/_18sdp"
+                            android:padding="@dimen/_10sdp"
+                            android:inputType="number"/>
+
+                        <EditText
+                            android:gravity="center"
+                            android:layout_gravity="left"
+                            android:id="@+id/et2"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:textColorHint="@color/gray"
+                            android:singleLine="true"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:background="@drawable/oval_gray"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:maxLength="1"
+                            android:textSize="@dimen/_18sdp"
+                            android:padding="@dimen/_10sdp"
+                            android:inputType="number"
+                          />
+
+                        <EditText
+                            android:gravity="center"
+                            android:layout_gravity="left"
+                            android:id="@+id/et3"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:textColorHint="@color/gray"
+                            android:singleLine="true"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:background="@drawable/oval_gray"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:maxLength="1"
+                            android:textSize="@dimen/_18sdp"
+                            android:padding="@dimen/_10sdp"
+                            android:inputType="number"
+                           />
+
+                        <EditText
+                            android:gravity="center"
+                            android:layout_gravity="left"
+                            android:id="@+id/et4"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:textColorHint="@color/gray"
+                            android:singleLine="true"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:background="@drawable/oval_gray"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:maxLength="1"
+                            android:textSize="@dimen/_18sdp"
+                            android:padding="@dimen/_10sdp"
+                            android:inputType="number"
+                            />
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_42sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_50sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:background="@drawable/btn_color"
+                        android:gravity="center"
+                        android:text="Verification"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</layout>
