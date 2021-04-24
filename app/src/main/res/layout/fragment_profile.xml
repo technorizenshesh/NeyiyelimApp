@@ -171,10 +171,27 @@
                 app:cornerRadius="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginRight="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:elevation="@dimen/_3sdp"
                 android:textAllCaps="false"
                 android:text="ChnageePassword"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="normal" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                app:backgroundTint="@color/purple_700"
+                app:rippleColor="@color/white"
+                app:cornerRadius="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:elevation="@dimen/_3sdp"
+                android:textAllCaps="false"
+                android:text="Logout"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 android:textStyle="normal" />

@@ -32,8 +32,11 @@ import com.laapesca.neyiyelimapp.utils.Preference;
 import com.laapesca.neyiyelimapp.utils.RetrofitClients;
 import com.laapesca.neyiyelimapp.utils.SessionManager;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -77,6 +80,20 @@ public class CartDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
+            }
+        });
+
+        binding.RRClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (sessionManager.isNetworkAvailable()) {
+                    binding.progressBar.setVisibility(View.VISIBLE);
+                    emptyMethod();
+
+                }else {
+                    Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -129,6 +146,8 @@ public class CartDetailFragment extends Fragment {
         }else {
             Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
         }
+
+
 
 
 
@@ -231,12 +250,18 @@ public class CartDetailFragment extends Fragment {
                         binding.LLCard.setVisibility(View.VISIBLE);
 
                         modellist = (ArrayList<GetCardTwo>) myclass.getResult();
-                        setAdapter(modellist);
 
-                        int TotaalPrice = myclass.getTotal();
-                        binding.txtPrice.setText("Total: "+TotaalPrice);
-                        binding.tcc0.setText(""+TotaalPrice);
-                        binding.priceTotla.setText(""+TotaalPrice);
+                        if(!modellist.isEmpty())
+                        {
+                            setAdapter(modellist);
+                            binding.txtRestaurentName.setText(modellist.get(0).getRestaurantName().toString());
+
+                            double TotaalPrice = myclass.getTotal();
+                            binding.txtPrice.setText("Total: "+TotaalPrice);
+                            binding.tcc0.setText(""+TotaalPrice);
+                            binding.priceTotla.setText(""+TotaalPrice);
+
+                        }
 
                     }else {
                         binding.LLCard.setVisibility(View.GONE);
@@ -251,6 +276,51 @@ public class CartDetailFragment extends Fragment {
 
             @Override
             public void onFailure(Call<GetCardOne> call, Throwable t) {
+                binding.progressBar.setVisibility(View.GONE);
+                binding.LLCard.setVisibility(View.GONE);
+                binding.txtEmty.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    public void emptyMethod() {
+
+        String user_id = Preference.get( getActivity(), Preference.KEY_USER_ID);
+
+        Call<ResponseBody> call = RetrofitClients
+                .getInstance()
+                .getApi()
+                .empty_cart(user_id);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+
+                    binding.progressBar.setVisibility(View.GONE);
+
+                    JSONObject jsonObject = new JSONObject(response.body().string());
+                    String status = jsonObject.getString ("status");
+                    String result = jsonObject.getString ("result");
+
+                    if (status.equalsIgnoreCase("1")){
+
+                        binding.LLCard.setVisibility(View.GONE);
+                        binding.txtEmty.setVisibility(View.VISIBLE);
+                        Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+
+                    }else {
+                        binding.LLCard.setVisibility(View.GONE);
+                        binding.txtEmty.setVisibility(View.VISIBLE);
+                    }
+                } catch (Exception e) {
+                    binding.LLCard.setVisibility(View.GONE);
+                    binding.txtEmty.setVisibility(View.VISIBLE);
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 binding.progressBar.setVisibility(View.GONE);
                 binding.LLCard.setVisibility(View.GONE);
                 binding.txtEmty.setVisibility(View.VISIBLE);

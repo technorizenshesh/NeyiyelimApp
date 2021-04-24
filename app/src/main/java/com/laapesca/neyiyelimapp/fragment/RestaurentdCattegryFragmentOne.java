@@ -266,10 +266,13 @@ public class RestaurentdCattegryFragmentOne extends Fragment {
 
         String UserId = Preference.get( getActivity(), Preference.KEY_USER_ID);
 
+        String RestaurentName = Preference.get( getActivity(),Preference.KEY_RestaurentName);
+        String RestaurentName_img =  Preference.get( getActivity(),Preference.KEY_RestaurentName_img);
+
         Call<ResponseBody> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .add_to_cart(UserId,submenuID,qantity,remark);
+                .add_to_cart(UserId,submenuID,qantity,remark,RestaurentName,RestaurentName_img);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

@@ -60,7 +60,7 @@ public class CardDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
 
             genericViewHolder.item_name.setText(model.getProductDetial().get(0).getSubmenuTitle() +"( "+(model.getQuantity()+" )"));
-            genericViewHolder.item_price_sub.setText(model.getProductDetial().get(0).getSubmenuPrice());
+            genericViewHolder.item_price_sub.setText(model.getNewTotal().toString());
         }
     }
 

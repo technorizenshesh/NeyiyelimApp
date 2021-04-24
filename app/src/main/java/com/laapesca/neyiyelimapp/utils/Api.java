@@ -18,6 +18,7 @@ public interface Api {
 
     String signup ="signup";
     String login ="login";
+    String social_login ="social_login";
     String forgot_password ="forgot_password";
     String get_profile ="get_profile";
     String update_profile ="update_profile";
@@ -29,6 +30,7 @@ public interface Api {
     String get_sub_menu ="get_sub_menu";
     String add_to_cart ="add_to_cart";
     String get_card_item ="get_card_item";
+    String empty_cart ="empty_cart";
 
     @FormUrlEncoded
     @POST(signup)
@@ -42,12 +44,26 @@ public interface Api {
             @Field("lon") String lon
     );
 
- @FormUrlEncoded
+    @FormUrlEncoded
     @POST(login)
     Call<ResponseBody>login(
             @Field("email") String email,
             @Field("password") String password,
             @Field("register_id") String register_id,
+            @Field("lat") String lat,
+            @Field("lon") String lon
+    );
+
+
+    @FormUrlEncoded
+    @POST(social_login)
+    Call<ResponseBody>social_login(
+            @Field("email") String email,
+            @Field("user_name") String user_name,
+            @Field("mobile") String mobile,
+            @Field("password") String password,
+            @Field("register_id") String register_id,
+            @Field("social_id") String social_id,
             @Field("lat") String lat,
             @Field("lon") String lon
     );
@@ -60,7 +76,7 @@ public interface Api {
             @Field("mobile") String mobile
     );*/
 
- @FormUrlEncoded
+    @FormUrlEncoded
     @POST(update_profile)
     Call<ResponseBody>update_profile(
             @Field("user_id") String user_id,
@@ -70,7 +86,7 @@ public interface Api {
             @Field("profile_image") String profile_image
     );
 
- @FormUrlEncoded
+    @FormUrlEncoded
     @POST(change_password)
     Call<ResponseBody>change_password(
             @Field("user_id") String user_id,
@@ -78,44 +94,52 @@ public interface Api {
             @Field("password") String password
     );
 
- @FormUrlEncoded
+    @FormUrlEncoded
     @POST(forgot_password)
     Call<ResponseBody>forgot_password(
             @Field("email") String email
     );
 
-@FormUrlEncoded
+    @FormUrlEncoded
     @POST(get_menu)
     Call<Branch>get_menu(
             @Field("branch_id") String branch_id
     );
 
-@FormUrlEncoded
+    @FormUrlEncoded
     @POST(get_sub_menu)
     Call<GetMenu>get_sub_menu(
             @Field("branch_id") String branch_id,
             @Field("menuID") String menuID
-    )
+    );
 
-        ;@FormUrlEncoded
+    @FormUrlEncoded
     @POST(get_card_item)
     Call<GetCardOne>get_card_item(
             @Field("user_id") String user_id
     );
 
-@FormUrlEncoded
+    @FormUrlEncoded
+    @POST(empty_cart)
+    Call<ResponseBody>empty_cart(
+            @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
     @POST(add_to_cart)
     Call<ResponseBody>add_to_cart(
             @Field("user_id") String user_id,
             @Field("product_id") String product_id,
             @Field("quantity") String quantity,
-            @Field("remark") String remark
+            @Field("remark") String remark,
+            @Field("restaurant_name") String restaurant_name,
+            @Field("restaurant_image") String restaurant_image
     );
 
 
     @POST(get_all_restaurant)
     Call<RestaurentModel>get_all_restaurant();
- 
+
 
     @POST(get_category)
     Call<CategoryModel> get_category();

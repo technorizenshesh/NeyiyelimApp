@@ -93,6 +93,15 @@ public class HomeFragment extends Fragment {
             Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
         }
 
+        binding.searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                fragment = new SearchFraagmentFragment();
+                loadFragment(fragment);
+            }
+        });
+
         MobelestBanner.clear();
         MobelestBanner.add(new BannerMoodelData(R.drawable.img));
         MobelestBanner.add(new BannerMoodelData(R.drawable.img));
@@ -119,6 +128,9 @@ public class HomeFragment extends Fragment {
             public void onItemClick(View view, int position, RestaurentModelData model) {
 
                 Preference.save( getActivity(),Preference.KEY_BRANCH_ID,model.getBranchID());
+
+                Preference.save( getActivity(),Preference.KEY_RestaurentName,model.getRestaurantName());
+                Preference.save( getActivity(),Preference.KEY_RestaurentName_img,model.getRestaurantLogo());
 
                 fragment = new RestaurentdCattegryFragment();
                 loadFragment(fragment);

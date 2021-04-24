@@ -28,6 +28,15 @@ public class GetCardTwo {
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("restaurant_name")
+    @Expose
+    private String restaurantName;
+    @SerializedName("restaurant_image")
+    @Expose
+    private String restaurantImage;
+    @SerializedName("new_total")
+    @Expose
+    private Integer newTotal;
     @SerializedName("product_detial")
     @Expose
     private List<ProductDetialModel> productDetial = null;
@@ -88,6 +97,30 @@ public class GetCardTwo {
         this.status = status;
     }
 
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
+    public String getRestaurantImage() {
+        return restaurantImage;
+    }
+
+    public void setRestaurantImage(String restaurantImage) {
+        this.restaurantImage = restaurantImage;
+    }
+
+    public Integer getNewTotal() {
+        return newTotal;
+    }
+
+    public void setNewTotal(Integer newTotal) {
+        this.newTotal = newTotal;
+    }
+
     public List<ProductDetialModel> getProductDetial() {
         return productDetial;
     }
@@ -95,5 +128,4 @@ public class GetCardTwo {
     public void setProductDetial(List<ProductDetialModel> productDetial) {
         this.productDetial = productDetial;
     }
-
 }

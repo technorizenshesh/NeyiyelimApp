@@ -36,6 +36,7 @@ public class ProfileFragment extends Fragment {
     private ProgressBar progressBar;
     private MaterialButton btn_Editprofile;
     private MaterialButton btnChangePassword;
+    private MaterialButton btnLogout;
     private SessionManager sessionManager;
 
     TextView txxt_userName;
@@ -70,12 +71,19 @@ public class ProfileFragment extends Fragment {
         progressBar=view.findViewById(R.id.progressBar);
         btn_Editprofile=view.findViewById(R.id.btn_Editprofile);
         btnChangePassword=view.findViewById(R.id.btnChangePassword);
+        btnLogout=view.findViewById(R.id.btnLogout);
         sessionManager = new SessionManager(getActivity());
 
         btn_Editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), EditProfile.class));
+            }
+        });
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });
 
@@ -123,7 +131,15 @@ public class ProfileFragment extends Fragment {
 
                         txxt_userName.setText(UserName);
                         txxt_email.setText(Email);
-                        txxt_mobile.setText(Mobile);
+                        if(Mobile.equalsIgnoreCase(""))
+                        {
+                            txxt_mobile.setText("Null");
+
+                        }else {
+
+                            txxt_mobile.setText(Mobile);
+                        }
+
                         //String Country =myLogin.getResult().getEmail().toString();
 
                     }else {
