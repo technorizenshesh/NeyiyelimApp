@@ -19,9 +19,11 @@ public class HelpActivity extends AppCompatActivity {
         binding= DataBindingUtil.setContentView(this,R.layout.activity_help);
 
         binding.layPromo.tvHeader.setText("Help");
+
         binding.layPromo.imgHeader.setOnClickListener(v -> {
             onBackPressed();
             finish();
         });
+
     }
 }

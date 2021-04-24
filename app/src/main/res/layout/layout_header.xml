@@ -19,21 +19,33 @@
                 android:scaleType="centerInside"/>
 
 
-            <TextView
-                android:id="@+id/tv_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:layout_gravity="center_horizontal"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/red"
-                android:textStyle="bold"
-                android:textSize="@dimen/_16sdp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:src="@drawable/location"
+                    android:scaleType="centerInside"/>
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:id="@+id/tv_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your Current Location"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14sdp" />
+
+            </LinearLayout>
 
         </RelativeLayout>
-
-
-
 
     </RelativeLayout>
 

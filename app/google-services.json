@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "772033278967",
+    "project_id": "neyiyelimap",
+    "storage_bucket": "neyiyelimap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772033278967:android:4e7fad1c2eef8635d334f2",
+        "android_client_info": {
+          "package_name": "com.laapesca.neyiyelimapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772033278967-otbf5nsnbn0scbj6imshcl5peo9l1cei.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.laapesca.neyiyelimapp",
+            "certificate_hash": "d74d0e052d329ad017400f39860c7db884a6a960"
+          }
+        },
+        {
+          "client_id": "772033278967-4t69kkma0hbqn4fs15um2qla2fq1830n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVA2vDGhPxm2T8aIR9ZPnfMueiEj3TiVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772033278967-4t69kkma0hbqn4fs15um2qla2fq1830n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

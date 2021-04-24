@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import com.laapesca.neyiyelimapp.R;
 import com.laapesca.neyiyelimapp.databinding.ActivityHomeScreenBinding;
 import com.laapesca.neyiyelimapp.fragment.CartDetailFragment;
 import com.laapesca.neyiyelimapp.fragment.HomeFragment;
+import com.laapesca.neyiyelimapp.fragment.ProfileFragment;
 import com.laapesca.neyiyelimapp.listner.FragmentListener;
 
 import kotlin.Unit;
@@ -43,7 +45,10 @@ public class HomeScreenActivity extends AppCompatActivity implements Function1<M
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home_screen);
 
-        toolbar = findViewById(R.id.toolbar);
+        binding.layPromo.tvHeader.setText("Your Current Location");
+        binding.layPromo.imgHeader.setVisibility(View.GONE);
+
+      /*  toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setIcon(R.drawable.ic_menu);
         getSupportActionBar().setTitle("Home");
@@ -64,7 +69,7 @@ public class HomeScreenActivity extends AppCompatActivity implements Function1<M
         drawer.setViewElevation(Gravity.START, 80);
 
         Toast.makeText(getApplicationContext(), "Swipe From Left To open Drawer", Toast.LENGTH_LONG).show();
-
+*/
 
         fragment = new HomeFragment(this);
         loadFragment(fragment);
@@ -80,11 +85,11 @@ public class HomeScreenActivity extends AppCompatActivity implements Function1<M
 
         bottomNavigation.setOnClickMenuListener(this);
 
-        Init();
+      //  Init();
 
     }
 
-    private void Init() {
+   /* private void Init() {
 
         binding.navId.txNe.setOnClickListener(v -> {
             // startActivity(new Intent(this,PromotionsActivity.class));
@@ -216,7 +221,7 @@ public class HomeScreenActivity extends AppCompatActivity implements Function1<M
         });
 
 
-    }
+    }*/
 
 
     private void loadFragment(Fragment fragment) {
@@ -245,8 +250,6 @@ public class HomeScreenActivity extends AppCompatActivity implements Function1<M
     @Override
     public Unit invoke(MeowBottomNavigation.Model model) {
         switch (model.getId()) {
-
-
             case 1:
                 Toast.makeText(HomeScreenActivity.this, "item 1", Toast.LENGTH_SHORT).show();
                 fragment = new HomeFragment(this);
@@ -261,6 +264,8 @@ public class HomeScreenActivity extends AppCompatActivity implements Function1<M
                 Toast.makeText(HomeScreenActivity.this, "item 3", Toast.LENGTH_SHORT).show();
                 break;
             case 4:
+                fragment = new ProfileFragment(this);
+                loadFragment(fragment);
                 Toast.makeText(HomeScreenActivity.this, "item 0", Toast.LENGTH_SHORT).show();
                 break;
         }
@@ -270,7 +275,7 @@ public class HomeScreenActivity extends AppCompatActivity implements Function1<M
     @Override
     protected void onResume() {
         super.onResume();
-        getSupportActionBar().setTitle("Home");
+      //  getSupportActionBar().setTitle("Home");
     }
 
     @Override

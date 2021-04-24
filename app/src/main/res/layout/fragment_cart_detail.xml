@@ -9,20 +9,82 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
-     <!--   <include
-            android:id="@+id/lay_cart"
-            layout="@layout/layout_header"
+        <ProgressBar
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/progressBar"
+            android:background="@drawable/progresh_background"
+            android:elevation="@dimen/_6sdp"
+            android:padding="@dimen/_5sdp"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/colorGray"
+            android:visibility="gone"
             />
--->
+
+        <TextView
+            android:visibility="visible"
+            android:layout_centerInParent="true"
+            android:id="@+id/txt_emty"
+            android:textSize="@dimen/_16sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Data Found"
+            android:textColor="@color/red"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/RR_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/RR_back"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="match_parent"
+
+                    >             <ImageView
+                    android:layout_centerInParent="true"
+                    android:visibility="visible"
+                    android:id="@+id/img_header"
+                    android:layout_width="20sp"
+                    android:layout_height="20sp"
+                    android:src="@drawable/back"
+                    android:scaleType="centerInside"/>
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:id="@+id/tv_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Card"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14sdp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
 
         <androidx.core.widget.NestedScrollView
+            android:layout_below="@+id/RR_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="vertical">
 
         <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/LL_card"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -32,19 +94,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
 
-            <ImageView
-                android:id="@+id/iv_PostDimg"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_250sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_gravity="center"
-                android:layout_centerHorizontal="true"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:src="@drawable/img"
-                android:visibility="visible" />
+                <ImageView
+                    android:id="@+id/iv_PostDimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_250sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img"
+                    android:visibility="visible" />
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -54,6 +116,7 @@
                     android:src="@drawable/edit"/>
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/delet"
                     android:layout_below="@id/edit"
                     android:layout_width="wrap_content"
@@ -78,6 +141,8 @@
 
 
         <LinearLayout
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -86,7 +151,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Veggie tomato mix"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_15sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_weight="1"
@@ -98,18 +162,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Item(s): 2"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_15sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:textColor="@color/black"
                 android:textStyle="normal"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                />
 
         </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_getitemCat"
+                android:visibility="visible"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+            </androidx.recyclerview.widget.RecyclerView>
+
+
 
 
 
             <TextView
+                android:id="@+id/txt_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total: 30.00"
@@ -221,6 +297,7 @@
 
 
                     <TextView
+                        android:id="@+id/priceTotla"
                         android:layout_below="@id/viewLine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -315,6 +392,7 @@
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
+                android:visibility="gone"
                 app:backgroundTint="@color/purple_700"
                 app:rippleColor="@color/white"
                 app:cornerRadius="@dimen/_10sdp"
@@ -351,6 +429,7 @@
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginRight="@dimen/_15sdp"
                 android:elevation="@dimen/_3sdp"
+                android:visibility="gone"
                 android:textAllCaps="false"
                 android:text="En Düşük Fiyat Garantili Menü"
                 android:drawableRight="@drawable/ic_down"
@@ -364,6 +443,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 app:backgroundTint="@color/white"
+                android:visibility="gone"
                 app:rippleColor="@color/white"
                 app:cornerRadius="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
@@ -381,6 +461,7 @@
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
+                android:visibility="gone"
                 app:backgroundTint="@color/white"
                 app:rippleColor="@color/white"
                 app:cornerRadius="@dimen/_10sdp"

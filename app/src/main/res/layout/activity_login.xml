@@ -61,6 +61,8 @@
                             >
 
                             <EditText
+                                android:text="sk@gmail.com"
+                                android:id="@+id/edtEmail"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="textEmailAddress"
@@ -92,16 +94,29 @@
                             >
 
                             <EditText
+                                android:text="123456"
+                                android:id="@+id/edtPassword"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textEmailAddress"
-
+                                android:inputType="textPassword"
                                 android:textColor="@color/colorGray"
                                 android:textSize="@dimen/_13sdp"
                                 />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <ProgressBar
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerInParent="true"
+                            android:id="@+id/progressBar"
+                            android:background="@drawable/progresh_background"
+                            android:elevation="6dp"
+                            android:padding="5dp"
+                            android:indeterminate="true"
+                            android:indeterminateTintMode="src_atop"
+                            android:indeterminateTint="@color/colorBlack"
+                            android:visibility="gone"/>
 
                     </RelativeLayout>
 

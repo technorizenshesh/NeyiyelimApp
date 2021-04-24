@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -62,6 +63,7 @@
                             >
 
                             <EditText
+                                android:id="@+id/edtUserName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="textEmailAddress"
@@ -90,6 +92,7 @@
                             >
 
                             <EditText
+                                android:id="@+id/edtEmail"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="textEmailAddress"
@@ -118,6 +121,7 @@
                             >
 
                         <EditText
+                            android:id="@+id/edtPassword"
                             android:gravity="left"
                             android:layout_gravity="left"
                             android:textColor="@color/black"
@@ -151,24 +155,35 @@
                             >
 
                             <EditText
+                                android:id="@+id/edtMobile"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textEmailAddress"
+                                android:inputType="number"
                                 android:textColor="@color/colorGray"
                                 android:textSize="@dimen/_13sdp"
                                 />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <ProgressBar
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerInParent="true"
+                            android:id="@+id/progressBar"
+                            android:background="@drawable/progresh_background"
+                            android:elevation="6dp"
+                            android:padding="5dp"
+                            android:indeterminate="true"
+                            android:indeterminateTintMode="src_atop"
+                            android:indeterminateTint="@color/colorBlack"
+                            android:visibility="gone"
+                            />
 
                     </RelativeLayout>
 
 
-
-
-
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/bt_login"
+                        android:id="@+id/bt_SignUp"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_42sdp"
                         android:layout_gravity="center"
@@ -221,7 +236,6 @@
 
 
                 </LinearLayout>
-
             </RelativeLayout>
 
         </androidx.core.widget.NestedScrollView>

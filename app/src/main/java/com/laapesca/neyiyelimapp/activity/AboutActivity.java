@@ -16,13 +16,16 @@ public class AboutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= DataBindingUtil.setContentView(this,R.layout.activity_about);
+
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_about);
 
         binding.layPromo.tvHeader.setText("About");
+
         binding.layPromo.imgHeader.setOnClickListener(v -> {
             onBackPressed();
             finish();
         });
 
     }
+
 }
