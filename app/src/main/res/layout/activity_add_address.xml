@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:background="@drawable/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/RR_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp">
+
+            <RelativeLayout
+                android:id="@+id/RRBack"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="match_parent"
+                >
+
+                <ImageView
+                    android:src="@drawable/back"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp">
+
+                </ImageView>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Address"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:textColor="#FA4A0C"
+                android:textStyle="bold"
+                android:textSize="@dimen/_16sdp" />
+
+        </RelativeLayout>
+
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/_20sdp"
+                    android:orientation="vertical"
+                    >
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_marginRight="@dimen/_12sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:background="#f4f4f4"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:visibility="visible"
+                            android:background="@drawable/roundbttn_ilin"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            >
+
+                            <Spinner
+                                android:layout_toLeftOf="@+id/RR_arrow"
+                                android:visibility="visible"
+                                android:id="@+id/spinnerCountry"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:backgroundTint="@color/colorBlack"
+                                style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
+
+
+                            <RelativeLayout
+                                android:layout_alignParentRight="true"
+                                android:id="@+id/RR_arrow"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="right"
+                                    android:src="@drawable/drop_down" />
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_marginRight="@dimen/_12sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:background="#f4f4f4"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:visibility="visible"
+                            android:background="@drawable/roundbttn_ilin"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            >
+
+                            <Spinner
+                                android:layout_toLeftOf="@+id/RR_arrow1"
+                                android:visibility="visible"
+                                android:id="@+id/spinnerCity"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:backgroundTint="@color/colorBlack"
+                                style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
+
+
+                            <RelativeLayout
+                                android:layout_alignParentRight="true"
+                                android:id="@+id/RR_arrow1"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="right"
+                                    android:src="@drawable/drop_down" />
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:visibility="gone"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        >
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="visible"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Location"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            >
+
+                            <EditText
+                                android:id="@+id/edtLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textEmailAddress"
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/_13sdp"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        >
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="visible"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Address"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            >
+
+                            <EditText
+                                android:id="@+id/edtAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textEmailAddress"
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/_13sdp"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="visible"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:hint="Address Direction"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            >
+
+                            <EditText
+                                android:id="@+id/edtAddressDirecton"
+                                android:gravity="left"
+                                android:layout_gravity="left"
+                                android:textColor="@color/black"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColorHint="@color/gray"
+                                android:singleLine="true"
+                                android:textSize="@dimen/_12sdp"
+                                android:inputType="text"
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="left"
+                        android:layout_gravity="left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Address Type"
+                            android:textColor="@color/colorGray"
+                            android:textSize="@dimen/_16sdp"/>
+
+                    </RelativeLayout>
+
+                    <CheckBox
+                        android:id="@+id/checkHome"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textSize="@dimen/_14sdp"
+                        android:text="Home Address"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                    </CheckBox>
+
+                    <CheckBox
+                        android:id="@+id/checkWork"
+                        android:textSize="@dimen/_14sdp"
+                        android:text="Work Address"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                    </CheckBox>
+
+                    <CheckBox
+                        android:id="@+id/checkCamus"
+                        android:textSize="@dimen/_14sdp"
+                        android:text="Campus Address"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                    </CheckBox>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        >
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="visible"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:hint="Other Address"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            >
+
+                            <EditText
+                                android:id="@+id/edtOtherAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/_13sdp"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <ProgressBar
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerInParent="true"
+                            android:id="@+id/progressBar"
+                            android:background="@drawable/progresh_background"
+                            android:elevation="6dp"
+                            android:padding="5dp"
+                            android:indeterminate="true"
+                            android:indeterminateTintMode="src_atop"
+                            android:indeterminateTint="@color/colorBlack"
+                            android:visibility="gone"
+                            />
+
+                    </RelativeLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/bt_save_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_42sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:background="@drawable/btn_color"
+                        android:gravity="center"
+                        android:text="Save"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</layout>

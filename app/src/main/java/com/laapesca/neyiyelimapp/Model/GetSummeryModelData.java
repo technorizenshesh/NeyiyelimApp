@@ -3,9 +3,7 @@ package com.laapesca.neyiyelimapp.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class GetCardTwo {
+public class GetSummeryModelData {
 
     @SerializedName("id")
     @Expose
@@ -34,12 +32,9 @@ public class GetCardTwo {
     @SerializedName("restaurant_image")
     @Expose
     private String restaurantImage;
-    @SerializedName("new_total")
+    @SerializedName("address_detial")
     @Expose
-    private Double newTotal;
-    @SerializedName("product_detial")
-    @Expose
-    private List<ProductDetialModel> productDetial = null;
+    private AddressDetialFinal addressDetial;
 
     public String getId() {
         return id;
@@ -113,19 +108,11 @@ public class GetCardTwo {
         this.restaurantImage = restaurantImage;
     }
 
-    public Double getNewTotal() {
-        return newTotal;
+    public AddressDetialFinal getAddressDetial() {
+        return addressDetial;
     }
 
-    public void setNewTotal(Double newTotal) {
-        this.newTotal = newTotal;
-    }
-
-    public List<ProductDetialModel> getProductDetial() {
-        return productDetial;
-    }
-
-    public void setProductDetial(List<ProductDetialModel> productDetial) {
-        this.productDetial = productDetial;
+    public void setAddressDetial(AddressDetialFinal addressDetial) {
+        this.addressDetial = addressDetial;
     }
 }

@@ -11,7 +11,6 @@ import com.laapesca.neyiyelimapp.databinding.ActivityPromotionsBinding;
 
 public class PromotionsActivity extends AppCompatActivity {
 
-
     private ActivityPromotionsBinding binding;
 
     @Override
@@ -19,14 +18,13 @@ public class PromotionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding= DataBindingUtil.setContentView(this,R.layout.activity_promotions);
-      //  setContentView(R.layout.activity_promotions);
-
+      // setContentView(R.layout.activity_promotions);
         binding.layPromo.tvHeader.setText("Promotiones");
-        binding.layPromo.imgHeader.setOnClickListener(v -> {
+
+        binding.layPromo.imgHeader.setOnClickListener(v ->{
             onBackPressed();
             finish();
         });
-
 
     }
 }

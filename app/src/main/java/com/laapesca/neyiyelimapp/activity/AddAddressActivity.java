@@ -7,26 +7,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.laapesca.neyiyelimapp.Model.CountryNameModel;
 import com.laapesca.neyiyelimapp.Model.CountryNameModelData;
 import com.laapesca.neyiyelimapp.Model.GetCityModel;
 import com.laapesca.neyiyelimapp.Model.GetCityModelData;
-import com.laapesca.neyiyelimapp.Model.RestaurentModel;
-import com.laapesca.neyiyelimapp.Model.RestaurentModelData;
 import com.laapesca.neyiyelimapp.R;
 import com.laapesca.neyiyelimapp.adapter.CitySpinnerAdapter;
 import com.laapesca.neyiyelimapp.adapter.CountryInSpinnerAdapter;
-import com.laapesca.neyiyelimapp.adapter.CountrySpinnerAdapter;
-import com.laapesca.neyiyelimapp.databinding.ActivitySignUpBinding;
+import com.laapesca.neyiyelimapp.databinding.ActivityAddAddressBinding;
+import com.laapesca.neyiyelimapp.utils.Preference;
 import com.laapesca.neyiyelimapp.utils.RetrofitClients;
 import com.laapesca.neyiyelimapp.utils.SessionManager;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import okhttp3.ResponseBody;
@@ -34,44 +31,79 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SignUpActivity extends AppCompatActivity {
+public class    AddAddressActivity extends AppCompatActivity {
 
-    ActivitySignUpBinding binding;
-    String message="";
+    ActivityAddAddressBinding binding;
     private SessionManager sessionManager;
-
-    private String code[] ={"1","2","3","4","5","6","7","8","9","10"};
-    private int flags[]= {R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo};
+    String AddressType = "";
     private ArrayList<CountryNameModelData> CountryList = new ArrayList<CountryNameModelData>();
     private ArrayList<GetCityModelData> CityList = new ArrayList<GetCityModelData>();
-
+    private int flags[]= {R.drawable.logo,R.drawable.logo,R.drawable.logo,R.drawable.logo};
+    String City ="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_sign_up);
+        binding= DataBindingUtil.setContentView(this,R.layout.activity_add_address);
 
-        init();
+        sessionManager = new SessionManager(AddAddressActivity.this);
 
+        CountryList.clear();
+        CityList.clear();
 
-    }
-
-    private void init() {
-
-        sessionManager = new SessionManager(SignUpActivity.this);
-
-        binding.btSignUp.setOnClickListener(new View.OnClickListener() {
+        binding.RRBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Validation();
+                onBackPressed();
+            }
+        });
 
+        binding.checkHome.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    binding.checkWork.setChecked(false);
+                    binding.checkCamus.setChecked(false);
+                    AddressType ="Home";
+                }
+            }
+        });
+
+        binding.checkWork.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    binding.checkHome.setChecked(false);
+                    binding.checkCamus.setChecked(false);
+
+                    AddressType ="Work";
+                }
+            }
+        });
+
+        binding.checkCamus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    binding.checkWork.setChecked(false);
+                    binding.checkHome.setChecked(false);
+                    AddressType ="Campus";
+                }
+            }
+        });
+
+        binding.btSaveAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+
+                Validation();
             }
         });
 
         binding.spinnerCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View arg1, int pos, long arg3){
 
-               String CountryId = CountryList.get(pos).getCountryID();
+                String CountryId = CountryList.get(pos).getCountryID();
 
                 if (sessionManager.isNetworkAvailable()) {
 
@@ -80,10 +112,25 @@ public class SignUpActivity extends AppCompatActivity {
                     getCity(CountryId);
 
                 }else {
-                    Toast.makeText(SignUpActivity.this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddAddressActivity.this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
                 }
 
-                Toast.makeText(SignUpActivity.this, CountryId, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddAddressActivity.this, CountryId, Toast.LENGTH_SHORT).show();
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+        binding.spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View arg1, int pos, long arg3){
+
+                City = CountryList.get(pos).getCountryID();
+
+                Toast.makeText(AddAddressActivity.this, City, Toast.LENGTH_SHORT).show();
 
             }
             @Override
@@ -103,31 +150,30 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
         }
 
-
     }
 
     private void Validation() {
 
-        String UserName = binding.edtUserName.getText().toString();
-        String Email = binding.edtEmail.getText().toString();
-        String Mobile = binding.edtMobile.getText().toString();
-        String Pasword = binding.edtPassword.getText().toString();
+        String Location = binding.edtLocation.getText().toString();
+        String Address = binding.edtAddress.getText().toString();
+        String AddressDirection = binding.edtAddressDirecton.getText().toString();
 
-        if(UserName.equalsIgnoreCase(""))
-        {
-            Toast.makeText(this, "Please Enter UserName", Toast.LENGTH_SHORT).show();
+        String OtherAddress = binding.edtAddressDirecton.getText().toString();
 
-        }else if(Email.equalsIgnoreCase(""))
+        if(Location.equalsIgnoreCase(""))
         {
-            Toast.makeText(this, "Please Enter Email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please Enter Location", Toast.LENGTH_SHORT).show();
 
-        }else if(Mobile.equalsIgnoreCase(""))
+        }else if(Address.equalsIgnoreCase(""))
         {
-            Toast.makeText(this, "Please Enter Mobile", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please Enter Address", Toast.LENGTH_SHORT).show();
 
-        }else if(Pasword.equalsIgnoreCase(""))
-        {
-            Toast.makeText(this, "Please Enter Password", Toast.LENGTH_SHORT).show();
+        }else if(AddressDirection.equalsIgnoreCase("")) {
+            Toast.makeText(this, "Please Enter AddressDirection", Toast.LENGTH_SHORT).show();
+
+        }else if(OtherAddress.equalsIgnoreCase("")) {
+
+            Toast.makeText(this, "Please Enter OtherAddress", Toast.LENGTH_SHORT).show();
 
         }else {
 
@@ -135,57 +181,47 @@ public class SignUpActivity extends AppCompatActivity {
 
                 binding.progressBar.setVisibility(View.VISIBLE);
 
-                signUpMethod(UserName,Email,Mobile,Pasword);
+                addAddress(Address,AddressDirection,OtherAddress);
 
             }else {
-                Toast.makeText(this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddAddressActivity.this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
             }
-
-
         }
 
     }
 
-    private void signUpMethod(String userName, String email, String mobile, String pasword){
+    public void addAddress(String address, String addressDirection, String otherAddress) {
+
+        String user_id = Preference.get(AddAddressActivity.this, Preference.KEY_USER_ID);
 
         Call<ResponseBody> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .signup(userName,email,pasword,mobile,"hbhjbhjh","75.2325","75.2325");
+                .add_delivery_address(user_id,City,address,addressDirection,AddressType,otherAddress);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
 
-                    binding.btSignUp.setEnabled(true);
                     binding.progressBar.setVisibility(View.GONE);
 
                     JSONObject jsonObject = new JSONObject(response.body().string());
                     String status = jsonObject.getString ("status");
-                    message = jsonObject.getString ("message");
 
-                    if (status.equalsIgnoreCase("1")) {
+                    if (status.equalsIgnoreCase("1")){
 
-                        Toast.makeText(SignUpActivity.this, message, Toast.LENGTH_SHORT).show();
-
-                        startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
-
-                    } else {
-                        binding.btSignUp.setEnabled(true);
+                        startActivity(new Intent(AddAddressActivity.this, DeliveryAddress.class));
+                        finish();
+                        Toast.makeText(AddAddressActivity.this, "SuccessFully Save.", Toast.LENGTH_SHORT).show();
                     }
-                } catch (JSONException e) {
-                    Toast.makeText(SignUpActivity.this, message, Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    Toast.makeText(SignUpActivity.this, message, Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 binding.progressBar.setVisibility(View.GONE);
-                binding.btSignUp.setEnabled(true);
-                Toast.makeText(SignUpActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -211,12 +247,12 @@ public class SignUpActivity extends AppCompatActivity {
                     if (status.equalsIgnoreCase("1")){
 
                         CountryList= (ArrayList<CountryNameModelData>) myclass.getResult();
-                        CountryInSpinnerAdapter customAdapter=new CountryInSpinnerAdapter(SignUpActivity.this,flags,CountryList);
+                        CountryInSpinnerAdapter customAdapter=new CountryInSpinnerAdapter(AddAddressActivity.this,flags,CountryList);
                         binding.spinnerCountry.setAdapter(customAdapter);
 
 
                     }else {
-                        Toast.makeText(SignUpActivity.this, result, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddAddressActivity.this, result, Toast.LENGTH_SHORT).show();
 
                     }
                 } catch (Exception e) {
@@ -227,7 +263,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<CountryNameModel> call, Throwable t) {
                 binding.progressBar.setVisibility(View.GONE);
-                Toast.makeText(SignUpActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddAddressActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -252,13 +288,13 @@ public class SignUpActivity extends AppCompatActivity {
 
                     if (status.equalsIgnoreCase("1")){
 
-                       CityList= (ArrayList<GetCityModelData>) myclass.getResult();
-                        CitySpinnerAdapter customAdapter=new CitySpinnerAdapter(SignUpActivity.this,flags,CityList);
+                        CityList= (ArrayList<GetCityModelData>) myclass.getResult();
+                        CitySpinnerAdapter customAdapter=new CitySpinnerAdapter(AddAddressActivity.this,flags,CityList);
                         binding.spinnerCity.setAdapter(customAdapter);
 
 
                     }else {
-                        Toast.makeText(SignUpActivity.this, result, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddAddressActivity.this, result, Toast.LENGTH_SHORT).show();
 
                     }
                 } catch (Exception e) {
@@ -269,7 +305,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<GetCityModel> call, Throwable t) {
                 binding.progressBar.setVisibility(View.GONE);
-                Toast.makeText(SignUpActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddAddressActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

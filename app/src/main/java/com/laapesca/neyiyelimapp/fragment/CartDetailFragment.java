@@ -1,6 +1,7 @@
 package com.laapesca.neyiyelimapp.fragment;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
@@ -23,7 +24,9 @@ import com.laapesca.neyiyelimapp.Model.GetCardTwo;
 import com.laapesca.neyiyelimapp.Model.GetMenu;
 import com.laapesca.neyiyelimapp.Model.GetMenuItem;
 import com.laapesca.neyiyelimapp.R;
+import com.laapesca.neyiyelimapp.activity.DeliveryAddress;
 import com.laapesca.neyiyelimapp.activity.HomeScreenActivity;
+import com.laapesca.neyiyelimapp.activity.LoginActivity;
 import com.laapesca.neyiyelimapp.adapter.CardDetailAdapter;
 import com.laapesca.neyiyelimapp.adapter.ResataurentCategoryItemAdapterOne;
 import com.laapesca.neyiyelimapp.databinding.FragmentCartDetailBinding;
@@ -83,6 +86,7 @@ public class CartDetailFragment extends Fragment {
             }
         });
 
+
         binding.RRClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +122,11 @@ public class CartDetailFragment extends Fragment {
         });
 
         binding.btnMakeoffer.setOnClickListener(v -> {
-            final Dialog dialog = new Dialog(getActivity());
+            Intent intent =new Intent(getActivity(), DeliveryAddress.class);
+            intent.putExtra("Type","Payment");
+            startActivity(intent);
+
+      /*      final Dialog dialog = new Dialog(getActivity());
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setCancelable(false);
             dialog.setContentView(R.layout.dialog_editcart);
@@ -133,7 +141,7 @@ public class CartDetailFragment extends Fragment {
                 }
             });
 
-            dialog.show();
+            dialog.show();*/
 
         });
 

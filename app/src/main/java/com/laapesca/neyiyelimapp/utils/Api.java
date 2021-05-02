@@ -3,8 +3,12 @@ package com.laapesca.neyiyelimapp.utils;
 import com.laapesca.neyiyelimapp.Model.BannerMoodel;
 import com.laapesca.neyiyelimapp.Model.Branch;
 import com.laapesca.neyiyelimapp.Model.CategoryModel;
+import com.laapesca.neyiyelimapp.Model.CountryNameModel;
+import com.laapesca.neyiyelimapp.Model.DeliveryAddressModelAdreess;
 import com.laapesca.neyiyelimapp.Model.GetCardOne;
+import com.laapesca.neyiyelimapp.Model.GetCityModel;
 import com.laapesca.neyiyelimapp.Model.GetMenu;
+import com.laapesca.neyiyelimapp.Model.GetSummeryModel;
 import com.laapesca.neyiyelimapp.Model.MyProfileModel;
 import com.laapesca.neyiyelimapp.Model.RestaurentModel;
 
@@ -31,6 +35,13 @@ public interface Api {
     String add_to_cart ="add_to_cart";
     String get_card_item ="get_card_item";
     String empty_cart ="empty_cart";
+    String add_delivery_address ="add_delivery_address";
+    String get_delivery_address ="get_delivery_address";
+    String add_select_address ="add_select_address";
+    String get_country ="get_country";
+    String get_city ="get_city";
+    String get_summary ="get_summary";
+    String add_placeorder ="add_placeorder";
 
     @FormUrlEncoded
     @POST(signup)
@@ -120,6 +131,36 @@ public interface Api {
     );
 
     @FormUrlEncoded
+    @POST(get_delivery_address)
+    Call<DeliveryAddressModelAdreess>get_delivery_address(
+            @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
+    @POST(get_summary)
+    Call<GetSummeryModel>get_summary(
+            @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
+    @POST(add_select_address)
+    Call<ResponseBody>add_select_address(
+            @Field("delivery_address_id") String delivery_address_id,
+            @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
+    @POST(add_delivery_address)
+    Call<ResponseBody>add_delivery_address(
+            @Field("user_id") String user_id,
+            @Field("location") String location,
+            @Field("address") String address,
+            @Field("address_direction") String address_direction,
+            @Field("address_type") String address_type,
+            @Field("other_address") String other_address
+    );
+
+    @FormUrlEncoded
     @POST(empty_cart)
     Call<ResponseBody>empty_cart(
             @Field("user_id") String user_id
@@ -140,6 +181,16 @@ public interface Api {
     @POST(get_all_restaurant)
     Call<RestaurentModel>get_all_restaurant();
 
+    @POST(get_country)
+    Call<CountryNameModel>get_country();
+
+
+    @FormUrlEncoded
+    @POST(get_city)
+    Call<GetCityModel>get_city(
+            @Field("country_id") String country_id
+    );
+
 
     @POST(get_category)
     Call<CategoryModel> get_category();
@@ -150,6 +201,25 @@ public interface Api {
     @FormUrlEncoded
     @POST(get_profile)
     Call<MyProfileModel> getProfile(@Field("user_id") String str);
+
+
+    @FormUrlEncoded
+    @POST(add_placeorder)
+    Call<ResponseBody>add_placeorder(
+            @Field("customer_id") String customer_id,
+            @Field("branch_id") String branch_id,
+            @Field("paymentTypeID") String paymentTypeID,
+            @Field("order_date") String order_date,
+            @Field("order_time") String order_time,
+            @Field("delivery_date") String delivery_date,
+            @Field("cart_id") String cart_id,
+            @Field("delivery_time") String delivery_time,
+            @Field("total_amount") String total_amount,
+            @Field("customerLat") String customerLat,
+            @Field("customerLag") String customerLag,
+            @Field("customerPingpoint") String customerPingpoint
+    );
+
 
 
 }

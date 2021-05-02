@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+     >
+
+        <ProgressBar
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/progressBar"
+            android:background="@drawable/progresh_background"
+            android:elevation="6dp"
+            android:padding="5dp"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/colorBlack"
+            android:visibility="gone"
+            />
+
+        <RelativeLayout
+            android:id="@+id/RR_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp">
+
+            <RelativeLayout
+                android:id="@+id/RRBack"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="match_parent"
+                >
+
+                <ImageView
+                    android:src="@drawable/back"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp">
+
+                </ImageView>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delivery Address"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:textColor="#FA4A0C"
+                android:textStyle="bold"
+                android:textSize="@dimen/_16sdp"
+                />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/RR_toolbar"
+            android:background="@color/black"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@+id/view"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_above="@+id/btn_save_address"
+            android:id="@+id/recycler_view_selected_lest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/txtEmty"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Data Found"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:textColor="#FA4A0C"
+            android:textSize="@dimen/_14sdp"
+            />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_address"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_above="@+id/btn_Address"
+            app:backgroundTint="@color/purple_700"
+            app:rippleColor="@color/white"
+            app:cornerRadius="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:elevation="@dimen/_3sdp"
+            android:textAllCaps="false"
+            android:text="Save Address"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp"
+            android:textStyle="normal"
+            />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_Address"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            app:backgroundTint="@color/purple_700"
+            app:rippleColor="@color/white"
+            app:cornerRadius="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:elevation="@dimen/_3sdp"
+            android:textAllCaps="false"
+            android:text="Add New Address"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp"
+            android:textStyle="normal"
+            />
+
+
+    </RelativeLayout>
+
+</layout>

@@ -21,8 +21,7 @@
 
                 <TextView
                     android:id="@+id/txt_re_name"
-                    android:textSize="@dimen/_16sdp"
-                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:textSize="@dimen/_14sdp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
                     android:layout_width="wrap_content"
@@ -126,7 +125,6 @@
                     android:layout_width="@dimen/_70sdp"
                     android:layout_height="@dimen/_100sdp"
                     android:layout_marginTop="10sp"
-                    android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_marginRight="@dimen/_10sdp"
                     app:cardBackgroundColor="@color/white"
                     app:cardElevation="0dp">

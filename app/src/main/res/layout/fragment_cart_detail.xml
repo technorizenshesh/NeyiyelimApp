@@ -319,6 +319,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Minimum order amount must exceed 10.00 for your region"
@@ -330,6 +331,7 @@
                 android:textSize="@dimen/_14sdp" />
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"

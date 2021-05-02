@@ -46,7 +46,6 @@ import retrofit2.Response;
 public class RestaurentdCattegryFragmentOne extends Fragment {
 
     View view;
-
     private ProgressBar progressBar;
     private Button btn_next;
 

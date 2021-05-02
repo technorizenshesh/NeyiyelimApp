@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/_5sdp"
+    android:id="@+id/card_img"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardBackgroundColor="@color/white"
+    >
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:padding="@dimen/_10sdp"
+            android:id="@+id/LL_view"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/txt_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:singleLine="true"
+                    android:text="test416"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:id="@+id/txt_address_direction"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:text="Order Id : 12345"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"/>
+
+            <TextView
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:text="Status : Accept"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"/>
+
+            <TextView
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:text="Delivery Date : 2017-05-07"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                />
+
+            <TextView
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:text="Delivery Time : 21:02:00"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:visibility="gone"
+            android:layout_below="@+id/LL_view"
+            android:background="@color/gray"
+            android:layout_width="match_parent"
+            android:layout_height="2dp">
+        </View>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

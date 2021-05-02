@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.PlaceAnOrderFragment">
+
+    <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        android:background="@drawable/progresh_background"
+        android:elevation="@dimen/_6sdp"
+        android:padding="@dimen/_5sdp"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorGray"
+        android:visibility="gone"
+        />
+
+    <RelativeLayout
+        android:id="@+id/RR_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RelativeLayout
+                android:id="@+id/RR_back"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="match_parent"
+
+                >             <ImageView
+                android:layout_centerInParent="true"
+                android:visibility="visible"
+                android:id="@+id/img_header"
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:src="@drawable/back"
+                android:scaleType="centerInside"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:layout_below="@id/RR_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+
+    </View>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_below="@id/RR_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/ll_profile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:id="@+id/txt_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    android:textColor="@color/my_txtblue"/>
+
+                <ImageView
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/arrow_yellow"
+                    />
+
+
+            </RelativeLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_below="@id/RR_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </View>
+
+            <RelativeLayout
+                android:id="@+id/RR_myOrder"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Order"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    android:textColor="@color/my_txtblue"/>
+
+                <ImageView
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/arrow_yellow"
+                    />
+
+
+            </RelativeLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_below="@id/RR_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </View>
+
+            <RelativeLayout
+                android:id="@+id/RR_changePassword"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chnage Password"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    android:textColor="@color/my_txtblue"/>
+
+                <ImageView
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/arrow_yellow"
+                    />
+
+
+            </RelativeLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_below="@id/RR_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </View>
+
+
+            <RelativeLayout
+                android:id="@+id/RR_delivery_address"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery Address"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    android:textColor="@color/my_txtblue"/>
+
+                <ImageView
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/arrow_yellow"
+                    />
+
+
+            </RelativeLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_below="@id/RR_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </View>
+
+            <RelativeLayout
+                android:id="@+id/RR_aboout"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Abouts"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    android:textColor="@color/my_txtblue"/>
+
+                <ImageView
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/arrow_yellow"
+                    />
+
+
+            </RelativeLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_below="@id/RR_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </View>
+
+            <RelativeLayout
+                android:id="@+id/RR_Contact"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    android:textColor="@color/my_txtblue"/>
+
+                <ImageView
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/arrow_yellow"
+                    />
+
+
+            </RelativeLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_below="@id/RR_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </View>
+
+            <RelativeLayout
+                android:id="@+id/RR_Faq"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FAQ"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    android:textColor="@color/my_txtblue"/>
+
+                <ImageView
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/arrow_yellow"
+                    />
+
+
+            </RelativeLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_below="@id/RR_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </View>
+            <RelativeLayout
+                android:id="@+id/RR_Help"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Help"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    android:textColor="@color/my_txtblue"/>
+
+                <ImageView
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/arrow_yellow"
+                    />
+
+
+            </RelativeLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_below="@id/RR_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </View>
+
+            <RelativeLayout
+                android:id="@+id/RR_logout"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Logout"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    android:textColor="@color/my_txtblue"/>
+
+                <ImageView
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/arrow_yellow"
+                    />
+
+
+            </RelativeLayout>
+
+            <View
+                android:background="@color/gray"
+                android:layout_below="@id/RR_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </View>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

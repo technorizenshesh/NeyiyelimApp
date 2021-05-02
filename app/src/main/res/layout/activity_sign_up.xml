@@ -165,6 +165,7 @@
 
                         </com.google.android.material.textfield.TextInputLayout>
 
+
                         <ProgressBar
                             android:layout_width="40dp"
                             android:layout_height="40dp"
@@ -180,6 +181,104 @@
                             />
 
                     </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_marginRight="@dimen/_12sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:background="#f4f4f4"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:visibility="visible"
+                            android:background="@drawable/roundbttn_ilin"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            >
+
+                            <Spinner
+                                android:layout_toLeftOf="@+id/RR_arrow"
+                                android:visibility="visible"
+                                android:id="@+id/spinnerCountry"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:backgroundTint="@color/colorBlack"
+                                style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
+
+
+                            <RelativeLayout
+                                android:layout_alignParentRight="true"
+                                android:id="@+id/RR_arrow"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="right"
+                                    android:src="@drawable/drop_down" />
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_marginRight="@dimen/_12sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:background="#f4f4f4"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:visibility="visible"
+                            android:background="@drawable/roundbttn_ilin"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            >
+
+                            <Spinner
+                                android:layout_toLeftOf="@+id/RR_arrow1"
+                                android:visibility="visible"
+                                android:id="@+id/spinnerCity"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:backgroundTint="@color/colorBlack"
+                                style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
+
+
+                            <RelativeLayout
+                                android:layout_alignParentRight="true"
+                                android:id="@+id/RR_arrow1"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="right"
+                                    android:src="@drawable/drop_down" />
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
 
 
                     <androidx.appcompat.widget.AppCompatButton

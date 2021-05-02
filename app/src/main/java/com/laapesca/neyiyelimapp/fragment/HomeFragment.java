@@ -46,10 +46,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
+public class
+HomeFragment extends Fragment {
 
     private View root;
-    private RecyclerView re;
     private FragmentHomeBinding binding;
 
     private int dotscount;
@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment {
     Timer timer;
     final long DELAY_MS = 500; //delay in milliseconds before task is to be executed
     final long PERIOD_MS = 3000;
+    //harshit
 
     FragmentListener listener;
     private ArrayList<RestaurentModelData> modellist = new ArrayList<RestaurentModelData>();

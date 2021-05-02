@@ -14,7 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NeyiyelimApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ChangePassword"></activity>
+        <activity android:name=".activity.MyOrderActivity"></activity>
+        <activity android:name=".activity.ContactActivity" />
+        <activity android:name=".activity.CheckOutSummeryPage" />
+        <activity android:name=".activity.AddAddressActivity" />
+        <activity android:name=".activity.DeliveryAddress" />
+        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.ChangePassword" />
         <activity android:name=".activity.EditProfile" />
         <activity
             android:name=".activity.PartnerActivity"

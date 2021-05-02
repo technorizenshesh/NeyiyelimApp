@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     String message="";
     private SessionManager sessionManager;
 
-    //Google SignIn
+    // Google SignIn
     private RelativeLayout RR_faceBook_login;
     private RelativeLayout RR_google_login;
     private SignInButton signInButton;

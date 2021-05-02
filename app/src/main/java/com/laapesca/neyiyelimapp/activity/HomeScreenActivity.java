@@ -21,9 +21,11 @@ import com.google.android.material.navigation.NavigationView;
 import com.infideap.drawerbehavior.AdvanceDrawerLayout;
 import com.laapesca.neyiyelimapp.R;
 import com.laapesca.neyiyelimapp.databinding.ActivityHomeScreenBinding;
+import com.laapesca.neyiyelimapp.fragment.AccountFragment;
 import com.laapesca.neyiyelimapp.fragment.CartDetailFragment;
 import com.laapesca.neyiyelimapp.fragment.HomeFragment;
 import com.laapesca.neyiyelimapp.fragment.ProfileFragment;
+import com.laapesca.neyiyelimapp.fragment.SearchFraagmentFragment;
 import com.laapesca.neyiyelimapp.listner.FragmentListener;
 
 import kotlin.Unit;
@@ -251,22 +253,21 @@ public class HomeScreenActivity extends AppCompatActivity implements Function1<M
     public Unit invoke(MeowBottomNavigation.Model model) {
         switch (model.getId()) {
             case 1:
-                Toast.makeText(HomeScreenActivity.this, "item 1", Toast.LENGTH_SHORT).show();
                 fragment = new HomeFragment(this);
                 loadFragment(fragment);
                 break;
             case 2:
-                Toast.makeText(HomeScreenActivity.this, "item 2", Toast.LENGTH_SHORT).show();
                 fragment = new CartDetailFragment(this);
                 loadFragment(fragment);
                 break;
             case 3:
-                Toast.makeText(HomeScreenActivity.this, "item 3", Toast.LENGTH_SHORT).show();
+                fragment = new SearchFraagmentFragment();
+                loadFragment(fragment);
                 break;
             case 4:
-                fragment = new ProfileFragment(this);
+
+                fragment = new AccountFragment();
                 loadFragment(fragment);
-                Toast.makeText(HomeScreenActivity.this, "item 0", Toast.LENGTH_SHORT).show();
                 break;
         }
         return null;
