@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -18,8 +19,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.laapesca.neyiyelimapp.R;
 import com.laapesca.neyiyelimapp.databinding.ActivityLoginBinding;
 import com.laapesca.neyiyelimapp.utils.Preference;
@@ -42,6 +46,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     String message="";
     private SessionManager sessionManager;
 
+
     // Google SignIn
     private RelativeLayout RR_faceBook_login;
     private RelativeLayout RR_google_login;
@@ -49,6 +54,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     FirebaseAuth mAuth;
     private final static int RC_SIGN_IN = 1;
     private GoogleApiClient googleApiClient;
+
+    String token="";
+    private static final String TAG = "fireBaseToken";
 
 
     @Override
@@ -76,6 +84,21 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 startActivityForResult(intent, RC_SIGN_IN);
             }
         });
+
+        //FirebaseToke
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        // Get new FCM registration token
+                        token = task.getResult();
+                        Log.e("token",token);
+                    }
+                });
 
     }
 
@@ -198,7 +221,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         Call<ResponseBody> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .login(email,pasword,"bjkbbbjb","75.2325","75.2325");
+                .login(email,pasword,token,"75.2325","75.2325");
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -213,10 +236,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
                     JSONObject resultOne = jsonObject.getJSONObject("result");
                     String UserId = resultOne.getString("customerID");
+                    String customer_region_id = resultOne.getString("town");
 
                     if (status.equalsIgnoreCase("1")) {
 
                      Preference.save( LoginActivity.this, Preference.KEY_USER_ID,UserId);
+                     Preference.save( LoginActivity.this, Preference.KEY_customer_region_id,customer_region_id);
 
                         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
 
@@ -262,6 +287,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
                     JSONObject resultOne = jsonObject.getJSONObject("result");
                     String UserId = resultOne.getString("customerID");
+                    String customer_region_id = resultOne.getString("town");
+
 
                     if (status.equalsIgnoreCase("1")) {
 

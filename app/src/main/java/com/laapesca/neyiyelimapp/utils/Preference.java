@@ -13,7 +13,9 @@ public class Preference {
     public static SharedPreferences sp;
 
     public static String KEY_USER_ID = "User_id";
+    public static String KEY_customer_region_id = "customer_region_id";
     public static String KEY_BRANCH_ID = "Branch_id";
+    public static String KEY_CardId = "CardId";
     public static String KEY_MEnu_ID = "menu_id";
     public static String KEY_RestaurentName = "RestaurentName";
     public static String KEY_RestaurentName_img = "RestaurentName_img";

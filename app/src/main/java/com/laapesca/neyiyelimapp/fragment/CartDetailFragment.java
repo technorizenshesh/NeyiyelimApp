@@ -122,6 +122,14 @@ public class CartDetailFragment extends Fragment {
         });
 
         binding.btnMakeoffer.setOnClickListener(v -> {
+
+            for (int i=0;i<modellist.size();i++)
+            {
+
+            }
+
+            Preference.save( getActivity(), Preference.KEY_CardId,"1");
+
             Intent intent =new Intent(getActivity(), DeliveryAddress.class);
             intent.putExtra("Type","Payment");
             startActivity(intent);

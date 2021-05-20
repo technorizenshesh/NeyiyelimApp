@@ -88,7 +88,7 @@ public class RestaurentdCattegryFragment extends Fragment {
 
     private void setAdapter(ArrayList<BranchModel> modellist) {
 
-        mAdapterListRestaurent = new ResataurentCategoryItemAdapter(getActivity(), this.modellist,RestaurentdCattegryFragment.this);
+        mAdapterListRestaurent = new ResataurentCategoryItemAdapter(getActivity(),modellist,RestaurentdCattegryFragment.this);
         recycle_itemCat.setHasFixedSize(true);
         // use a linear layout manager
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -116,8 +116,8 @@ public class RestaurentdCattegryFragment extends Fragment {
 
     public void getRestaurentMethod() {
 
-     //  String branchId = Preference.get( getActivity(), Preference.KEY_BRANCH_ID);
-        String branchId = "1179";
+     String branchId = Preference.get( getActivity(), Preference.KEY_BRANCH_ID);
+     //   String branchId = "1179";
 
         Call<Branch> call = RetrofitClients
                 .getInstance()

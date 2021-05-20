@@ -38,6 +38,8 @@ import com.laapesca.neyiyelimapp.utils.Preference;
 import com.laapesca.neyiyelimapp.utils.RetrofitClients;
 import com.laapesca.neyiyelimapp.utils.SessionManager;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,6 +49,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class
+
 HomeFragment extends Fragment {
 
     private View root;
@@ -58,10 +61,10 @@ HomeFragment extends Fragment {
     Timer timer;
     final long DELAY_MS = 500; //delay in milliseconds before task is to be executed
     final long PERIOD_MS = 3000;
-    //harshit
 
     FragmentListener listener;
     private ArrayList<RestaurentModelData> modellist = new ArrayList<RestaurentModelData>();
+    private ArrayList<RestaurentModelData> modellist_new = new ArrayList<RestaurentModelData>();
     private ArrayList<CategoryModelData> modelListCategory = new ArrayList<CategoryModelData>();
     private ArrayList<BannerMoodelData> MobelestBanner = new ArrayList<BannerMoodelData>();
 
@@ -69,6 +72,12 @@ HomeFragment extends Fragment {
     LatestAdapter mAdapterListRestaurent;
     private SessionManager sessionManager;
     Fragment fragment;
+
+    Boolean loading = true;
+
+    int pastVisibleItems, visibleItemCount, totalItemCount;
+    LinearLayoutManager linearLayoutManager;
+    int page = 1;
 
     public HomeFragment(FragmentListener listener) {
         this.listener = listener;
@@ -112,6 +121,67 @@ HomeFragment extends Fragment {
 
         viewPagerSlider(MobelestBanner);
 
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+
+        binding.btnLoad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                visibleItemCount = linearLayoutManager.getChildCount();
+                totalItemCount = linearLayoutManager.getItemCount();
+                pastVisibleItems = linearLayoutManager.findFirstVisibleItemPosition();
+                if (!loading) {
+                    if ((visibleItemCount + pastVisibleItems) >= totalItemCount) {
+                        loading = true;
+                        page = page+1;
+
+                        Toast.makeText(getActivity(), ""+page, Toast.LENGTH_SHORT).show();
+
+                     /*   if (sessionManager.isNetworkAvailable()) {
+
+                            binding.progressBar.setVisibility(View.VISIBLE);
+
+                            getRestaurentMethod(String.valueOf(page));
+
+                        }else {
+                            Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
+                        }*/
+                    }
+                }
+            }
+        });
+
+      /*  binding.btnLoad.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0)
+                {
+                    visibleItemCount = linearLayoutManager.getChildCount();
+                    totalItemCount = linearLayoutManager.getItemCount();
+                    pastVisibleItems = linearLayoutManager.findFirstVisibleItemPosition();
+
+                    if (!loading) {
+                        if ((visibleItemCount + pastVisibleItems) >= totalItemCount) {
+                            loading = true;
+                            page = page+1;
+
+                            Toast.makeText(getActivity(), ""+page, Toast.LENGTH_SHORT).show();
+
+                            if (sessionManager.isNetworkAvailable()) {
+
+                                binding.progressBar.setVisibility(View.VISIBLE);
+
+                                getRestaurentMethod(String.valueOf(page));
+
+                            }else {
+                                Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                }
+            }
+        });*/
+
         return binding.getRoot();
     }
 
@@ -120,7 +190,6 @@ HomeFragment extends Fragment {
         mAdapterListRestaurent = new LatestAdapter(getActivity(),modellist);
         binding.re.setHasFixedSize(true);
         // use a linear layout manager
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         binding.re.setLayoutManager(linearLayoutManager);
         binding.re.setAdapter(mAdapterListRestaurent);
 
@@ -130,13 +199,14 @@ HomeFragment extends Fragment {
 
                 Preference.save( getActivity(),Preference.KEY_BRANCH_ID,model.getBranchID());
 
-                Preference.save( getActivity(),Preference.KEY_RestaurentName,model.getRestaurantName());
-                Preference.save( getActivity(),Preference.KEY_RestaurentName_img,model.getRestaurantLogo());
+                Preference.save( getActivity(),Preference.KEY_RestaurentName,model.getRestaurantData().getRestaurantName());
+                Preference.save( getActivity(),Preference.KEY_RestaurentName_img,model.getRestaurantData().getRestaurantLogo());
 
                 fragment = new RestaurentdCattegryFragment();
                 loadFragment(fragment);
             }
         });
+
     }
 
     @Override
@@ -226,104 +296,21 @@ HomeFragment extends Fragment {
 
             }
         });
-    }
-
-    public void getCategoryMethod() {
-
-        Call<CategoryModel> call = RetrofitClients
-                .getInstance()
-                .getApi()
-                .get_category();
-
-        call.enqueue(new Callback<CategoryModel>() {
-            @Override
-            public void onResponse(Call<CategoryModel> call, Response<CategoryModel> response) {
-                try {
-
-                    binding.progressBar.setVisibility(View.GONE);
-
-                    CategoryModel myclass= response.body();
-
-                    String status = myclass.getStatus();
-                    String result = myclass.getMessage();
-
-                    if (status.equalsIgnoreCase("1")){
 
 
-
-                        modelListCategory = (ArrayList<CategoryModelData>) myclass.getResult();
-
-                        //getRestaurentMethod(modelListCategory.get(0).getId());
-
-                        setAdapter(modelListCategory);
-
-                    }else {
-                        Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
-
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CategoryModel> call, Throwable t) {
-                binding.progressBar.setVisibility(View.GONE);
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
-    public void getBanneer() {
 
-        Call<BannerMoodel> call = RetrofitClients
-                .getInstance()
-                .getApi()
-                .get_banner();
-
-        call.enqueue(new Callback<BannerMoodel>() {
-            @Override
-            public void onResponse(Call<BannerMoodel> call, Response<BannerMoodel> response) {
-                try {
-
-                    binding.progressBar.setVisibility(View.GONE);
-
-                    BannerMoodel myclass= response.body();
-
-                    String status = myclass.getStatus();
-                    String result = myclass.getMessage();
-
-                    if (status.equalsIgnoreCase("1")){
-
-                        MobelestBanner = (ArrayList<BannerMoodelData>) myclass.getResult();
-
-                        viewPagerSlider(MobelestBanner);
-
-                    }else {
-                        Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
-
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BannerMoodel> call, Throwable t) {
-                binding.progressBar.setVisibility(View.GONE);
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
 
     public void getRestaurentMethod() {
+
+        String customer_region_id = Preference.get( getActivity(), Preference.KEY_customer_region_id);
 
         Call<RestaurentModel> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .get_all_restaurant();
+                .get_all_restaurant(customer_region_id);
         call.enqueue(new Callback<RestaurentModel>() {
             @Override
             public void onResponse(Call<RestaurentModel> call, Response<RestaurentModel> response) {
@@ -339,7 +326,7 @@ HomeFragment extends Fragment {
                     if (status.equalsIgnoreCase("1")){
 
                         modellist = (ArrayList<RestaurentModelData>) myclass.getResult();
-
+                        loading = false;
                         SetuUI(modellist);
 
                     }else {

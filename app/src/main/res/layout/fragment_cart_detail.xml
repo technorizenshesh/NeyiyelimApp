@@ -83,7 +83,7 @@
             android:scrollbars="vertical">
 
          <LinearLayout
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/LL_card"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

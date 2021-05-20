@@ -49,22 +49,16 @@ public class LatestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             final RestaurentModelData model = getItem(position);
             final LatestAdapter.ViewHolder genericViewHolder = (LatestAdapter.ViewHolder) holder;
 
-          // String Country = model.getCountry().toString();
-            if( model.getCity()!=null)
-            {
-                String City = model.getCity().toString();
-                genericViewHolder.txt_City.setText(City);
-            }
 
-            if( model.getRestaurantName()!=null)
+            if( model.getRestaurantData().getRestaurantName()!=null)
             {
-                String RestaurantName = model.getRestaurantName().toString();
+                String RestaurantName = model.getRestaurantData().getRestaurantName().toString();
                 genericViewHolder.txt_re_name.setText(RestaurantName);
             }
 
-            if(model.getBranchMinDeliveryTime()!=null)
+            if(model.getMinDeliveryTime()!=null)
             {
-                String ServicesTime = model.getBranchMinDeliveryTime().toString();
+                String ServicesTime = model.getMinDeliveryTime().toString();
                 genericViewHolder.txt_servicesTime.setText(ServicesTime);
             }
 

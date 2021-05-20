@@ -97,6 +97,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next"
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"

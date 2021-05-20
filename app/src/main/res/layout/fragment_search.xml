@@ -25,7 +25,9 @@
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="match_parent"
 
-                    >             <ImageView
+                    >
+
+                    <ImageView
                     android:layout_centerInParent="true"
                     android:visibility="visible"
                     android:id="@+id/img_header"
@@ -118,6 +120,17 @@
                     android:layout_height="match_parent"
                     >
                 </androidx.recyclerview.widget.RecyclerView>
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btnLoad"
+                    android:text="Load More"
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    >
+
+                </Button>
 
             </LinearLayout>
 

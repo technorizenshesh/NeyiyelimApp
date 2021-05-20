@@ -3,11 +3,13 @@ package com.laapesca.neyiyelimapp.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MyProfileModel {
+import java.util.List;
+
+public class MyOrderModel {
 
     @SerializedName("result")
     @Expose
-    private MyProfileModelData result;
+    private List<MyOrderModelData> result = null;
     @SerializedName("message")
     @Expose
     private String message;
@@ -15,11 +17,11 @@ public class MyProfileModel {
     @Expose
     private String status;
 
-    public MyProfileModelData getResult() {
+    public List<MyOrderModelData> getResult() {
         return result;
     }
 
-    public void setResult(MyProfileModelData result) {
+    public void setResult(List<MyOrderModelData> result) {
         this.result = result;
     }
 
@@ -38,5 +40,4 @@ public class MyProfileModel {
     public void setStatus(String status) {
         this.status = status;
     }
-
 }

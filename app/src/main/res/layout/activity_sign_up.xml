@@ -58,7 +58,7 @@
                             android:visibility="visible"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Full Name"
+                            android:hint="User Name"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             >
 
@@ -180,10 +180,24 @@
                             android:visibility="gone"
                             />
 
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_margin="@dimen/_12sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Country"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"/>
+
                     </RelativeLayout>
 
                     <LinearLayout
-                        android:layout_marginTop="@dimen/_12sdp"
                         android:layout_marginLeft="@dimen/_12sdp"
                         android:layout_marginRight="@dimen/_12sdp"
                         android:layout_width="match_parent"
@@ -231,8 +245,21 @@
 
                     </LinearLayout>
 
+                    <RelativeLayout
+                        android:layout_margin="@dimen/_12sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="City"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"/>
+
+                    </RelativeLayout>
+
                     <LinearLayout
-                        android:layout_marginTop="@dimen/_12sdp"
                         android:layout_marginLeft="@dimen/_12sdp"
                         android:layout_marginRight="@dimen/_12sdp"
                         android:layout_width="match_parent"
@@ -280,6 +307,184 @@
 
                     </LinearLayout>
 
+                    <RelativeLayout
+                        android:layout_margin="@dimen/_12sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Select Region"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"/>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_marginRight="@dimen/_12sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:background="#f4f4f4"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:visibility="visible"
+                            android:background="@drawable/roundbttn_ilin"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            >
+
+                            <Spinner
+                                android:layout_toLeftOf="@+id/RR_Region"
+                                android:visibility="visible"
+                                android:id="@+id/spinnerRegion"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:backgroundTint="@color/colorBlack"
+                                style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
+
+
+                            <RelativeLayout
+                                android:layout_alignParentRight="true"
+                                android:id="@+id/RR_Region"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="right"
+                                    android:src="@drawable/drop_down" />
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="left"
+                        android:layout_gravity="left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Address Type"
+                            android:textColor="@color/colorGray"
+                            android:textSize="@dimen/_16sdp"/>
+
+                    </RelativeLayout>
+
+                    <CheckBox
+                        android:checked="true"
+                        android:id="@+id/checkHome"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textSize="@dimen/_14sdp"
+                        android:text="Home Address"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                    </CheckBox>
+
+                    <CheckBox
+                        android:id="@+id/checkWork"
+                        android:textSize="@dimen/_14sdp"
+                        android:text="Work Address"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                    </CheckBox>
+
+                    <CheckBox
+                        android:id="@+id/checkCamus"
+                        android:textSize="@dimen/_14sdp"
+                        android:text="Campus Address"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                    </CheckBox>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        >
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="visible"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Address Direction"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            >
+
+                            <EditText
+                                android:id="@+id/edtAddressDirection"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/_13sdp"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:id="@+id/LL_CurrentLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/gps_new" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:text="Use current location"
+                            android:textColor="@color/color_txtBlue"
+                            android:textSize="@dimen/_20sdp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/bt_SignUp"
@@ -318,6 +523,7 @@
 
 
                         <ImageView
+                            android:id="@+id/img_google"
                             android:layout_width="@dimen/_35sdp"
                             android:layout_height="@dimen/_35sdp"
                             android:layout_gravity="center"

@@ -216,10 +216,10 @@ public class RestaurentdCattegryFragmentOne extends Fragment {
 
     public void getRestaurentMethod() {
 
-        //  String branchId = Preference.get( getActivity(), Preference.KEY_BRANCH_ID);
-        String branchId = "652";
-        // String menuID = Preference.get( getActivity(), Preference.KEY_BRANCH_ID);
-        String menuID = "665";
+        String branchId = Preference.get( getActivity(), Preference.KEY_BRANCH_ID);
+       // String branchId = "652";
+         String menuID = Preference.get( getActivity(), Preference.KEY_BRANCH_ID);
+       // String menuID = "665";
 
         Call<GetMenu> call = RetrofitClients
                 .getInstance()
@@ -242,6 +242,8 @@ public class RestaurentdCattegryFragmentOne extends Fragment {
                         txt_emty.setVisibility(View.GONE);
 
                         modellist = (ArrayList<GetMenuItem>) myclass.getResult();
+
+                        btn_next.setVisibility(View.VISIBLE);
                         setAdapter(modellist);
 
                     }else {

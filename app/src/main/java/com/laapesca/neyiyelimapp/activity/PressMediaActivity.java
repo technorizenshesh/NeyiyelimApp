@@ -28,8 +28,6 @@ public class PressMediaActivity extends AppCompatActivity {
             finish();
         });
 
-
-
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Visual Media"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Print Media"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Social Media"));

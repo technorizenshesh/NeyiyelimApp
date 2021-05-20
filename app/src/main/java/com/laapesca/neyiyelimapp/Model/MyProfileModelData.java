@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class MyProfileModelData {
-
     @SerializedName("customerID")
     @Expose
     private String customerID;
@@ -698,6 +697,5 @@ public class MyProfileModelData {
     public void setSocialId(String socialId) {
         this.socialId = socialId;
     }
-
 
 }

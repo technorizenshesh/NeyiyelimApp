@@ -31,6 +31,9 @@ public class CheckOutSummeryPage extends AppCompatActivity {
 
     ActivityCheckOutSummeryPageBinding binding;
     private SessionManager sessionManager;
+    double TotalAmt=0;
+    String Address="";
+    String Quantity="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +64,17 @@ public class CheckOutSummeryPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(CheckOutSummeryPage.this, HomeScreenActivity.class));
+                if (sessionManager.isNetworkAvailable()) {
+
+                    binding.progressBar.setVisibility(View.VISIBLE);
+
+                    getPlaceOrder();
+
+                }else {
+                    Toast.makeText(CheckOutSummeryPage.this, R.string.checkInternet, Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 
@@ -103,11 +116,15 @@ public class CheckOutSummeryPage extends AppCompatActivity {
 
                     if (status.equalsIgnoreCase("1")){
 
+                        TotalAmt= myclass.getTotal();
+                        Address= myclass.getResult().get(0).getAddressDetial().getAddress();
+                        Quantity= myclass.getResult().get(0).getQuantity();
+
                         binding.txtReName.setText(myclass.getResult().get(0).getRestaurantName());
                         binding.txtAddressType.setText(myclass.getResult().get(0).getAddressDetial().getAddressType());
                         binding.txtAddressDirection.setText(myclass.getResult().get(0).getAddressDetial().getAddressDirection());
-                        binding.txtAddress.setText(myclass.getResult().get(0).getAddressDetial().getAddress());
-                        binding.txtTotal.setText(myclass.getTotal()+"");
+                        binding.txtAddress.setText(Address);
+                        binding.txtTotal.setText(TotalAmt+"");
 
                     }
                 } catch (Exception e){
@@ -127,11 +144,23 @@ public class CheckOutSummeryPage extends AppCompatActivity {
 
         String user_id = Preference.get(CheckOutSummeryPage.this, Preference.KEY_USER_ID);
 
+       // String branchId = Preference.get( getActivity(), Preference.KEY_BRANCH_ID);
+        String branchId = "1179";
+        String PaymentId = "12"; //Cash
+      String CardID = Preference.get( CheckOutSummeryPage.this, Preference.KEY_CardId);
+      String OrderDate = "2017-05-07";
+      String OrderTime = "21:02:00";
+      String DeliveryrDate = "2017-05-07";
+      String DeliveryrTime = "21:02:00";
+// String menuID = Preference.get( getActivity(), Preference.KEY_BRANCH_ID);
+        String menuID = "665";
+
+
         Call<ResponseBody> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .add_placeorder(user_id,"","","","","",
-                        "","","","","","");
+                .add_placeorder(user_id,branchId,PaymentId,OrderDate,OrderTime,DeliveryrDate,
+                        CardID,DeliveryrTime, String.valueOf(TotalAmt),"75.00","75.00",Address,"1","1",Quantity,String.valueOf(TotalAmt));
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -143,6 +172,9 @@ public class CheckOutSummeryPage extends AppCompatActivity {
                     String status = jsonObject.getString ("status");
 
                     if (status.equalsIgnoreCase("1")){
+
+
+                        startActivity(new Intent(CheckOutSummeryPage.this, HomeScreenActivity.class));
 
                         Toast.makeText(CheckOutSummeryPage.this, "SuccessFully.", Toast.LENGTH_SHORT).show();
                     }

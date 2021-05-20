@@ -9,7 +9,9 @@ import com.laapesca.neyiyelimapp.Model.GetCardOne;
 import com.laapesca.neyiyelimapp.Model.GetCityModel;
 import com.laapesca.neyiyelimapp.Model.GetMenu;
 import com.laapesca.neyiyelimapp.Model.GetSummeryModel;
+import com.laapesca.neyiyelimapp.Model.MyOrderModel;
 import com.laapesca.neyiyelimapp.Model.MyProfileModel;
+import com.laapesca.neyiyelimapp.Model.RegionModel;
 import com.laapesca.neyiyelimapp.Model.RestaurentModel;
 
 import okhttp3.ResponseBody;
@@ -18,7 +20,8 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
-public interface Api {
+public interface
+Api {
 
     String signup ="signup";
     String login ="login";
@@ -29,7 +32,9 @@ public interface Api {
     String change_password ="change_password";
     String get_category ="get_category";
     String get_banner ="get_banner";
-    String get_all_restaurant ="get_all_restaurant";
+  //String get_all_restaurant ="get_all_restaurant";
+    //String get_all_restaurant ="get_all_restaurant_new";
+    String get_all_restaurant ="rest";
     String get_menu ="get_menu";
     String get_sub_menu ="get_sub_menu";
     String add_to_cart ="add_to_cart";
@@ -39,9 +44,11 @@ public interface Api {
     String get_delivery_address ="get_delivery_address";
     String add_select_address ="add_select_address";
     String get_country ="get_country";
+    String get_region ="get_region";
     String get_city ="get_city";
     String get_summary ="get_summary";
     String add_placeorder ="add_placeorder";
+    String get_my_order ="get_my_order";
 
     @FormUrlEncoded
     @POST(signup)
@@ -52,7 +59,13 @@ public interface Api {
             @Field("mobile") String mobile,
             @Field("register_id") String register_id,
             @Field("lat") String lat,
-            @Field("lon") String lon
+            @Field("lon") String lon,
+            @Field("countryID") String countryID,
+            @Field("city") String city,
+            @Field("town") String town ,
+            @Field("town2") String town2 ,
+            @Field("address_type") String address_type,
+            @Field("address_details") String address_details
     );
 
     @FormUrlEncoded
@@ -131,6 +144,12 @@ public interface Api {
     );
 
     @FormUrlEncoded
+    @POST(get_my_order)
+    Call<MyOrderModel>get_my_order(
+            @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
     @POST(get_delivery_address)
     Call<DeliveryAddressModelAdreess>get_delivery_address(
             @Field("user_id") String user_id
@@ -178,17 +197,30 @@ public interface Api {
     );
 
 
-    @POST(get_all_restaurant)
-    Call<RestaurentModel>get_all_restaurant();
+    /*@POST(get_all_restaurant)
+    Call<RestaurentModel>get_all_restaurant();*/
 
     @POST(get_country)
     Call<CountryNameModel>get_country();
+
 
 
     @FormUrlEncoded
     @POST(get_city)
     Call<GetCityModel>get_city(
             @Field("country_id") String country_id
+    );
+
+    @FormUrlEncoded
+    @POST(get_all_restaurant)
+    Call<RestaurentModel>get_all_restaurant(
+            @Field("customer_region_id") String customer_region_id
+    );
+
+    @FormUrlEncoded
+    @POST(get_region)
+    Call<RegionModel>get_region(
+            @Field("city_id") String city_id
     );
 
 
@@ -217,7 +249,12 @@ public interface Api {
             @Field("total_amount") String total_amount,
             @Field("customerLat") String customerLat,
             @Field("customerLag") String customerLag,
-            @Field("customerPingpoint") String customerPingpoint
+            @Field("customerPingpoint") String customerPingpoint,
+
+            @Field("menu_id") String menu_id,
+            @Field("submenu_id") String submenu_id,
+            @Field("quantity") String quantity,
+            @Field("amount") String amount
     );
 
 

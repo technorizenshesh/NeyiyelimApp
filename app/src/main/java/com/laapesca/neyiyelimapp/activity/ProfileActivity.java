@@ -3,6 +3,7 @@ package com.laapesca.neyiyelimapp.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -36,6 +37,16 @@ public class ProfileActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        binding.btnEditprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(ProfileActivity.this, EditProfile.class));
+            }
+        });
+
+
         if (sessionManager.isNetworkAvailable()) {
 
             binding.progressBar.setVisibility(View.VISIBLE);

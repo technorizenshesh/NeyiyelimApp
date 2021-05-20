@@ -31,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class    AddAddressActivity extends AppCompatActivity {
+public class  AddAddressActivity extends AppCompatActivity {
 
     ActivityAddAddressBinding binding;
     private SessionManager sessionManager;
@@ -64,7 +64,7 @@ public class    AddAddressActivity extends AppCompatActivity {
                 if (b) {
                     binding.checkWork.setChecked(false);
                     binding.checkCamus.setChecked(false);
-                    AddressType ="Home";
+                    AddressType ="H";
                 }
             }
         });
@@ -76,7 +76,7 @@ public class    AddAddressActivity extends AppCompatActivity {
                     binding.checkHome.setChecked(false);
                     binding.checkCamus.setChecked(false);
 
-                    AddressType ="Work";
+                    AddressType ="W";
                 }
             }
         });
@@ -87,7 +87,7 @@ public class    AddAddressActivity extends AppCompatActivity {
                 if (b) {
                     binding.checkWork.setChecked(false);
                     binding.checkHome.setChecked(false);
-                    AddressType ="Campus";
+                    AddressType ="C";
                 }
             }
         });
@@ -160,11 +160,7 @@ public class    AddAddressActivity extends AppCompatActivity {
 
         String OtherAddress = binding.edtAddressDirecton.getText().toString();
 
-        if(Location.equalsIgnoreCase(""))
-        {
-            Toast.makeText(this, "Please Enter Location", Toast.LENGTH_SHORT).show();
-
-        }else if(Address.equalsIgnoreCase(""))
+        if(Address.equalsIgnoreCase(""))
         {
             Toast.makeText(this, "Please Enter Address", Toast.LENGTH_SHORT).show();
 
@@ -210,7 +206,9 @@ public class    AddAddressActivity extends AppCompatActivity {
 
                     if (status.equalsIgnoreCase("1")){
 
-                        startActivity(new Intent(AddAddressActivity.this, DeliveryAddress.class));
+                        Intent intent =new Intent(AddAddressActivity.this, DeliveryAddress.class);
+                        intent.putExtra("Type","Payment");
+                        startActivity(intent);
                         finish();
                         Toast.makeText(AddAddressActivity.this, "SuccessFully Save.", Toast.LENGTH_SHORT).show();
                     }

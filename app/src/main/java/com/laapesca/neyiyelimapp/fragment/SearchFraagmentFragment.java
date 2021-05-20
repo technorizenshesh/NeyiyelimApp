@@ -51,6 +51,10 @@ public class SearchFraagmentFragment extends Fragment {
     private ArrayList<RestaurentModelData> modellist = new ArrayList<RestaurentModelData>();
 
     LatestAdapter mAdapterListRestaurent;
+    Boolean loading = true;
+    int pastVisibleItems, visibleItemCount, totalItemCount;
+    LinearLayoutManager linearLayoutManager;
+    int page = 1;
 
     private SessionManager sessionManager;
     Fragment fragment;
@@ -68,6 +72,36 @@ public class SearchFraagmentFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
+            }
+        });
+
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+
+        binding.btnLoad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                visibleItemCount = linearLayoutManager.getChildCount();
+                totalItemCount = linearLayoutManager.getItemCount();
+                pastVisibleItems = linearLayoutManager.findFirstVisibleItemPosition();
+                if (!loading) {
+                    if ((visibleItemCount + pastVisibleItems) >= totalItemCount) {
+                        loading = true;
+                        page = page+1;
+
+                        Toast.makeText(getActivity(), ""+page, Toast.LENGTH_SHORT).show();
+
+                        if (sessionManager.isNetworkAvailable()) {
+
+                            binding.progressBar.setVisibility(View.VISIBLE);
+
+                            getRestaurentMethod(String.valueOf(page));
+
+                        }else {
+                            Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
             }
         });
 
@@ -103,7 +137,7 @@ public class SearchFraagmentFragment extends Fragment {
 
             binding.progressBar.setVisibility(View.VISIBLE);
 
-            getRestaurentMethod();
+            getRestaurentMethod(String.valueOf(page));
 
         }else {
             Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
@@ -119,7 +153,7 @@ public class SearchFraagmentFragment extends Fragment {
         for (RestaurentModelData d : modellist) {
             //or use .equal(text) with you want equal match
             //use .toLowerCase() for better matches
-            if (d.getRestaurantName().toLowerCase().contains(text.toString().toLowerCase())) {
+            if (d.getMinDeliveryTime().toLowerCase().contains(text.toString().toLowerCase())) {
                 temp.add(d);
 
             }
@@ -134,7 +168,7 @@ public class SearchFraagmentFragment extends Fragment {
         mAdapterListRestaurent = new LatestAdapter(getActivity(),modellist);
         binding.reSearch.setHasFixedSize(true);
         // use a linear layout manager
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+
         binding.reSearch.setLayoutManager(linearLayoutManager);
         binding.reSearch.setAdapter(mAdapterListRestaurent);
 
@@ -144,8 +178,8 @@ public class SearchFraagmentFragment extends Fragment {
 
                 Preference.save( getActivity(),Preference.KEY_BRANCH_ID,model.getBranchID());
 
-                Preference.save( getActivity(),Preference.KEY_RestaurentName,model.getRestaurantName());
-                Preference.save( getActivity(),Preference.KEY_RestaurentName_img,model.getRestaurantLogo());
+                Preference.save( getActivity(),Preference.KEY_RestaurentName,model.getBranchID());
+                Preference.save( getActivity(),Preference.KEY_RestaurentName_img,model.getBranchID());
 
                 fragment = new RestaurentdCattegryFragment();
                 loadFragment(fragment);
@@ -160,12 +194,12 @@ public class SearchFraagmentFragment extends Fragment {
 
 
 
-    public void getRestaurentMethod() {
+    public void getRestaurentMethod(String page) {
 
         Call<RestaurentModel> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .get_all_restaurant();
+                .get_all_restaurant(page);
         call.enqueue(new Callback<RestaurentModel>() {
             @Override
             public void onResponse(Call<RestaurentModel> call, Response<RestaurentModel> response) {
@@ -181,7 +215,7 @@ public class SearchFraagmentFragment extends Fragment {
                     if (status.equalsIgnoreCase("1")){
 
                         modellist = (ArrayList<RestaurentModelData>) myclass.getResult();
-
+                        loading =false;
                         SetuUI(modellist);
 
                     }else {
